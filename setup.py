@@ -2,7 +2,7 @@
 from setuptools import find_packages
 from setuptools import setup 
 
-setup(name='face_detector',
+setup(name='facedetector',
       version='1.0',
       description='Retail Intelligence face_detector',
       author='nautec',
