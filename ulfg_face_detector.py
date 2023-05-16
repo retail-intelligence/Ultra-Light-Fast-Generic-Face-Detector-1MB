@@ -38,13 +38,13 @@ class ULFGFaceDetector:
 
         if net_type == 'slim':
             from vision.ssd.mb_tiny_fd import create_mb_tiny_fd, create_mb_tiny_fd_predictor
-            model_path = os.path.join(os.path.dirname(os.path.abspath(__file__))), "models/pretrained/version-slim-320.pth")
+            model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/pretrained/version-slim-320.pth")
             # model_path = os.path.join(os.path.dirname(os.path.abspath(__file__))), "models/pretrained/version-slim-640.pth")
             net = create_mb_tiny_fd(len(class_names), is_test=True, device=test_device)
             self.predictor = create_mb_tiny_fd_predictor(net, candidate_size=self.candidate_size, device=test_device)
         elif net_type == 'RFB':
             from vision.ssd.mb_tiny_RFB_fd import create_Mb_Tiny_RFB_fd, create_Mb_Tiny_RFB_fd_predictor
-            model_path = os.path.join(os.path.dirname(os.path.abspath(__file__))), "models/pretrained/version-RFB-320.pth")
+            model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/pretrained/version-RFB-320.pth")
             # model_path = os.path.join(os.path.dirname(os.path.abspath(__file__))), "models/pretrained/version-RFB-640.pth")
             net = create_Mb_Tiny_RFB_fd(len(class_names), is_test=True, device=test_device)
             self.predictor = create_Mb_Tiny_RFB_fd_predictor(net, candidate_size=self.candidate_size, device=test_device)
