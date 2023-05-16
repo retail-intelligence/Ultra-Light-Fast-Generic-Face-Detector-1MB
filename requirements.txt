@@ -7,5 +7,3 @@ torchstat
 torchsummary
 ptflops
 matplotlib
-onnx
-onnxruntime
