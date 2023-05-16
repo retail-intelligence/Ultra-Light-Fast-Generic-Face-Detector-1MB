@@ -1,9 +1,5 @@
-numpy
-torch
-opencv_python
-torchvision
-typing
-torchstat
-torchsummary
-ptflops
-matplotlib
+numpy==1.24.2
+torch==1.12.1
+opencv_python==4.7.0.72
+torchvision==0.13.1
+matplotlib==3.5.3
