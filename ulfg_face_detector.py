@@ -89,7 +89,7 @@ class ULFGFaceDetector:
 
         if type(img) == str:
             img = cv2.imread(img)
-        image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # if image not in RGB mode
-        boxes, labels, probs = self.predictor.predict(image, self.candidate_size / 2, self.threshold)
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # if image not in RGB mode
+        boxes, labels, probs = self.predictor.predict(img, self.candidate_size / 2, self.threshold) # image must be in RGB color mode
         
         return boxes.tolist()
