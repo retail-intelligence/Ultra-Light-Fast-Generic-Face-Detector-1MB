@@ -6,6 +6,6 @@ setup(name='facedetector',
       version='1.0',
       description='Retail Intelligence face_detector',
       author='nautec',
-      packages=find_packages(),
       url='https://github.com/retail-intelligence/Ultra-Light-Fast-Generic-Face-Detector-1MB',
+      py_modules=["ulfg_face_detector"],
     )
