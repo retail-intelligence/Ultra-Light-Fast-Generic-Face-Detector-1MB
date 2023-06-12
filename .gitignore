@@ -1,6 +1,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+dist
+*.egg-info
+build
 
 test_imgs
 models

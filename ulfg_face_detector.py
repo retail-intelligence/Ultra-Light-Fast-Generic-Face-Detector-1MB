@@ -3,8 +3,6 @@ import cv2
 import os
 import wget
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 from vision.ssd.config.fd_config import define_img_size
 
 class ULFGFaceDetector:
@@ -50,29 +48,21 @@ class ULFGFaceDetector:
         
         define_img_size(input_size)  # must put define_img_size() before 'import create_mb_tiny_fd, create_mb_tiny_fd_predictor'
 
-        label_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "voc-model-labels.txt")
-        test_device = test_device
-
-        class_names = [name.strip() for name in open(label_path).readlines()]
+        class_names = ["BACKGROUND", "face"]
 
         self.candidate_size = candidate_size
 
         if net_type == 'slim':
             from vision.ssd.mb_tiny_fd import create_mb_tiny_fd, create_mb_tiny_fd_predictor
-            model_path = os.path.join(os.getcwd(), "models/face_detection/version-slim-320.pth")
-            # model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/pretrained/version-slim-640.pth")
             net = create_mb_tiny_fd(len(class_names), is_test=True, device=test_device)
             self.predictor = create_mb_tiny_fd_predictor(net, candidate_size=self.candidate_size, device=test_device)
         elif net_type == 'RFB':
             from vision.ssd.mb_tiny_RFB_fd import create_Mb_Tiny_RFB_fd, create_Mb_Tiny_RFB_fd_predictor
-            model_path = os.path.join(os.getcwd(), "models/face_detection/version-RFB-320.pth")
-            # model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models/pretrained/version-RFB-640.pth")
             net = create_Mb_Tiny_RFB_fd(len(class_names), is_test=True, device=test_device)
             self.predictor = create_Mb_Tiny_RFB_fd_predictor(net, candidate_size=self.candidate_size, device=test_device)
         else:
-            print("The net type is wrong!")
-            sys.exit(1)
-        net.load(model_path)
+            raise Exception("The net type is wrong!")
+        net.load(weights_path)
         
         self.threshold = threshold
 
